@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healingg Stars - Our Services</title>
+    <style>
+        :root {
+            --primary-color: #6b3fa0;
+            --secondary-color: #ff8c42;
+            --text-color: #f0f0f0;
+            --dark-bg: #0a1a2c;
+            --gradient-start: #170a35;
+            --gradient-end: #0f243a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        body {
+            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 60px 110px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 80px 150px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 100px 190px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 120px 230px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(10, 26, 44, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: 0.3s;
+        }
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        section {
+            padding: 100px 5%;
+            margin-top: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: rgba(26, 41, 66, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+        
+        .service-content {
+            padding: 20px;
+        }
+        
+        .service-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .service-content p {
+            color: #c5c5c5;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-subheadings {
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .service-subheadings li {
+            color: #c5c5c5;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+            list-style-type: none;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .service-subheadings li:before {
+            content: '✧';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        .service-price {
+            margin-top: 15px;
+            padding: 8px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .price-tag {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            display: inline-block;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .price-tag:before {
+            content: "From ";
+            font-size: 0.8rem;
+            position: relative;
+            top: -5px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        @media screen and (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+            }
+            
+            .logo h1 {
+                font-size: 1.2rem;
+            }
+            
+            nav ul li {
+                margin: 0 8px;
+            }
+            
+            section {
+                padding: 60px 5%;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <header>
+        <div class="logo">
+            <img src="/web/logo.png" alt="Healingg Stars Logo"/>
+            <h1>Healingg Stars</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <section id="services">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/personalastrology.jpg" alt="Personal Astrology"/>
+                </div>
+                <div class="service-content">
+                    <h3>Personal Astrology</h3>
+                    <p>Gain a deeper understanding of your life path through comprehensive natal chart readings tailored just for you.</p>
+                    <ul class="service-subheadings">
+                        <li>Birth Chart Analysis</li>
+                        <li>Transit & Progression Forecasts</li>
+                        <li>Career & Life Path Guidance</li>
+                        <li>Relationship Compatibility</li>
+                    </ul>
+                   <div class="service-price">
+                        <span class="price-tag">$80</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/numerology.jpeg" alt="Numerology Analysis"/>
+                </div>
+                <div class="service-content">
+                    <h3>Numerology Analysis</h3>
+                    <p>Discover how numbers influence your destiny and reveal patterns in your life journey through personalized calculations.</p>
+                    <ul class="service-subheadings">
+                        <li>Life Path & Destiny Numbers</li>
+                        <li>Name Analysis</li>
+                        <li>Compatibility Readings</li>
+                        <li>Personal Year Cycles</li>
+                    </ul>
+                     <div class="service-price">
+                        <span class="price-tag">$75</span>
+                    </div> 
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/relationshipcompatibility.jpeg" alt="Relationship Compatibility"/>
+                </div>
+                <div class="service-content">
+                    <h3>Relationship Compatibility</h3>
+                    <p>Understand your relationship dynamics through synastry charts and numerological compatibility analysis.</p>
+                    <ul class="service-subheadings">
+                        <li>Astrological Synastry</li>
+                        <li>Numerological Compatibility</li>
+                        <li>Relationship Timing</li>
+                        <li>Conflict Resolution Guidance</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-tag">$95</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/business.jpeg" alt="Business Astrology"/>
+                </div>
+                <div class="service-content">
+                    <h3>Business Astrology</h3>
+                    <p>Align your business decisions with cosmic timing to maximize success and minimize challenges.</p>
+                    <ul class="service-subheadings">
+                        <li>Business Timing</li>
+                        <li>Partnership Compatibility</li>
+                        <li>Financial Forecasting</li>
+                        <li>Career Path Analysis</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-tag">$120</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/eft.jpeg" alt="EFT & TFT"/>
+                </div>
+                <div class="service-content">
+                    <h3>EFT & TFT</h3>
+                    <p>Emotional Freedom Techniques and Thought Field Therapy to release emotional blocks and promote healing.</p>
+                    <ul class="service-subheadings">
+                        <li>Emotional Healing & Stress Reduction</li>
+                        <li>Phobia Treatment</li>
+                        <li>Pain Management</li>
+                        <li>Behavioral & Addictive Disorders</li>
+                        <li>Self-Esteem & Confidence Building</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-tag">$85</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/crystal.jpeg" alt="Crystal Healing"/>
+                </div>
+                <div class="service-content">
+                    <h3>Crystal Healing</h3>
+                    <p>Harness the natural energy of crystals to balance your body, mind, and spirit.</p>
+                    <ul class="service-subheadings">
+                        <li>Energy Balancing & Chakra Healing</li>
+                        <li>Emotional Healing</li>
+                        <li>Physical Healing & Pain Relief</li>
+                        <li>Healing for Relationships</li>
+                        <li>Spiritual Healing & Personal Growth</li>
+                    </ul>
+                   <div class="service-price">
+                        <span class="price-tag">$70</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/energy.jpeg" alt="Energy Clearing & Healing"/>
+                </div>
+                <div class="service-content">
+                    <h3>Energy Clearing & Healing</h3>
+                    <p>Cleanse and balance your energy field to promote overall wellbeing and spiritual growth.</p>
+                    <ul class="service-subheadings">
+                        <li>Aura & Chakra Cleansing</li>
+                        <li>Physical Healing</li>
+                        <li>Emotional & Mental Healing</li>
+                        <li>Depression & Trauma Healing</li>
+                        <li>Pranic Healing for Pets & Animals</li>
+                    </ul>
+                   <div class="service-price">
+                        <span class="price-tag">$80</span>
+                    </div> 
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <img src="/web/tarotreading.jpeg" alt="Tarot Readings"/>
+                </div>
+                <div class="service-content">
+                    <h3>Tarot Reading</h3>
+                    <p>Gain insights into your past, present, and future through the ancient wisdom of tarot cards.</p>
+                    <ul class="service-subheadings">
+                        <li>Personal Reading</li>
+                        <li>Relationship Reading</li>
+                        <li>Spiritual Guidance & Personal Growth</li>
+                        <li>Angelic Guidance</li>
+                        <li>Chakra & Energy Reading</li>
+                    </ul>
+                    <div class="service-price">
+                        <span class="price-tag">$65</span>
+                    </div> 
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

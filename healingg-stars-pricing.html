@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healingg Stars - Pricing</title>
+    <style>
+        :root {
+            --primary-color: #6b3fa0;
+            --secondary-color: #ff8c42;
+            --text-color: #f0f0f0;
+            --dark-bg: #0a1a2c;
+            --gradient-start: #170a35;
+            --gradient-end: #0f243a;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+    
+        body {
+            background: linear-gradient(to bottom, var(--gradient-start), var(--gradient-end));
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+        
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-image: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 60px 110px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 80px 150px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 100px 190px, #ffffff, rgba(0,0,0,0)),
+                              radial-gradient(2px 2px at 120px 230px, #ffffff, rgba(0,0,0,0));
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background-color: rgba(10, 26, 44, 0.8);
+            backdrop-filter: blur(5px);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 60px;
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin: 0 15px;
+        }
+        
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: 0.3s;
+            position: relative;
+        }
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: 0.3s;
+        }
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        #pricing {
+            padding: 100px 5%;
+            margin-top: 80px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--text-color);
+        }
+        
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            color: #c5c5c5;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .pricing-card {
+            background: rgba(26, 41, 66, 0.5);
+            border-radius: 15px;
+            overflow: hidden;
+            width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            border: 1px solid rgba(107, 63, 160, 0.3);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border: 2px solid var(--secondary-color);
+            box-shadow: 0 10px 30px rgba(255, 140, 66, 0.2);
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 0 15px 0 15px;
+        }
+        
+        .pricing-header {
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .pricing-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+        
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 5px;
+        }
+        
+        .duration {
+            font-size: 0.9rem;
+            color: #a0a0a0;
+        }
+        
+        .pricing-features {
+            padding: 30px 20px;
+        }
+        
+        .pricing-features ul {
+            list-style: none;
+        }
+        
+        .pricing-features ul li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+            color: #c5c5c5;
+        }
+        
+        .pricing-features ul li:before {
+            content: '✧';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+        
+        .pricing-btn {
+            display: block;
+            margin: 0 20px 20px;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .specialized-services {
+            margin-top: 80px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .specialized-services h3 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            color: var(--text-color);
+        }
+        
+        .specialized-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .specialized-item {
+            background: rgba(26, 41, 66, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(107, 63, 160, 0.3);
+        }
+        
+        .specialized-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .specialized-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--text-color);
+        }
+        
+        .specialized-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+        
+        .specialized-item p {
+            color: #c5c5c5;
+            font-size: 0.9rem;
+        }
+        
+        @media screen and (max-width: 991px) {
+            .pricing-card {
+                width: calc(50% - 20px);
+                min-width: 280px;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+        
+        @media screen and (max-width: 768px) {
+            .pricing-card {
+                width: 100%;
+                max-width: 350px;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <header>
+        <div class="logo">
+            <img src="/web/logo.png" alt="Healingg Stars Logo"/>
+            <h1>Healingg Stars</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="pricing">
+        <div class="section-title">
+            <h2>Our Pricing</h2>
+        </div>
+        <p class="section-intro">We offer transparent pricing with packages tailored to your specific needs. All consultations include personalized guidance and follow-up support.</p>
+        
+        <div class="pricing-container">
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Basic Consultation</h3>
+                    <div id="basic-price" class="price">$100</div>
+                    <p class="duration">60 Minutes</p>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>Single Topic Focus</li>
+                        <li>Detailed Analysis</li>
+                        <li>Email Summary</li>
+                        <li>1 Follow-up Question</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="pricing-btn">Book Now</a>
+            </div>
+            
+            <div class="pricing-card popular">
+                <div class="popular-tag">Most Popular</div>
+                <div class="pricing-header">
+                    <h3>Comprehensive Reading</h3>
+                    <div id="comprehensive-price" class="price">$200</div>
+                    <p class="duration">90 Minutes</p>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>Multiple Areas of Life</li>
+                        <li>In-depth Analysis</li>
+                        <li>Written Report</li>
+                        <li>2 Week Email Support</li>
+                        <li>Customized Recommendations</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="pricing-btn">Book Now</a>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="pricing-header">
+                    <h3>Premium Package</h3>
+                    <div id="premium-price" class="price">$350</div>
+                    <p class="duration">3 Sessions</p>
+                </div>
+                <div class="pricing-features">
+                    <ul>
+                        <li>Complete Life Analysis</li>
+                        <li>Detailed Written Report</li>
+                        <li>3 Month Support</li>
+                        <li>Customized Healing Plan</li>
+                        <li>Priority Scheduling</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="pricing-btn">Book Now</a>
+            </div>
+        </div>
+        
+        <div class="specialized-services">
+            <h3>Specialized Services</h3>
+            <div class="specialized-grid">
+                <div class="specialized-item">
+                    <h4>Business Astrology</h4>
+                    <div id="business-price" class="specialized-price">$150</div>
+                    <p>Strategic guidance for business decisions and timing</p>
+                </div>
+                <div class="specialized-item">
+                    <h4>Couple's Compatibility</h4>
+                    <div id="couples-price" class="specialized-price">$125</div>
+                    <p>Comprehensive relationship analysis for two people</p>
+                </div>
+                <div class="specialized-item">
+                    <h4>Energy Healing Session</h4>
+                    <div id="energy-price" class="specialized-price">$85</div>
+                    <p>Full chakra balancing and energy clearing</p>
+                </div>
+                <div class="specialized-item">
+                    <h4>EFT/TFT Therapy</h4>
+                    <div id="therapy-price" class="specialized-price">$90</div>
+                    <p>Targeted emotional healing techniques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    // Price configuration for different regions
+    const regionData = {
+        'global': {
+            name: 'Global',
+            currency: '$',
+            symbol: '$',
+            prices: {
+                basic: 100,
+                comprehensive: 200,
+                premium: 350,
+                business: 150,
+                couples: 125,
+                energy: 85,
+                therapy: 90
+            }
+        },
+        'in': {
+            name: 'India',
+            currency: 'INR',
+            symbol: '₹',
+            prices: {
+                basic: 1999,
+                comprehensive: 3499,
+                premium: 5999,
+                business: 4999,
+                couples: 3999,
+                energy: 2499,
+                therapy: 2799
+            }
+        },
+        'uk': {
+            name: 'United Kingdom',
+            currency: 'GBP',
+            symbol: '£',
+            prices: {
+                basic: 80,
+                comprehensive: 160,
+                premium: 280,
+                business: 120,
+                couples: 100,
+                energy: 70,
+                therapy: 75
+            }
+        },
+        'eu': {
+            name: 'Europe',
+            currency: 'EUR',
+            symbol: '€',
+            prices: {
+                basic: 90,
+                comprehensive: 180,
+                premium: 320,
+                business: 140,
+                couples: 115,
+                energy: 80,
+                therapy: 85
+            }
+        },
+        'us': {
+            name: 'United States',
+            currency: 'USD',
+            symbol: '$',
+            prices: {
+                basic: 100,
+                comprehensive: 200,
+                premium: 350,
+                business: 150,
+                couples: 125,
+                energy: 85,
+                therapy: 90
+            }
+        },
+        'ca': {
+            name: 'Canada',
+            currency: 'CAD',
+            symbol: 'C$',
+            prices: {
+                basic: 130,
+                comprehensive: 260,
+                premium: 450,
+                business: 200,
+                couples: 170,
+                energy: 110,
+                therapy: 120
+            }
+        }
+    };
+
+    // Update prices based on region
+    function updatePrices(region) {
+        const regionInfo = regionData[region];
+        
+        if (!regionInfo) return;
+        
+        // Update main package price elements
+        document.getElementById('basic-price').textContent = regionInfo.symbol + regionInfo.prices.basic;
+        document.getElementById('comprehensive-price').textContent = regionInfo.symbol + regionInfo.prices.comprehensive;
+        document.getElementById('premium-price').textContent = regionInfo.symbol + regionInfo.prices.premium;
+        
+        // Update specialized services price elements
+        document.getElementById('business-price').textContent = regionInfo.symbol + regionInfo.prices.business;
+        document.getElementById('couples-price').textContent = regionInfo.symbol + regionInfo.prices.couples;
+        document.getElementById('energy-price').textContent = regionInfo.symbol + regionInfo.prices.energy;
+        document.getElementById('therapy-price').textContent = regionInfo.symbol + regionInfo.prices.therapy;
+    }
+
+    // Multiple API options for geo-detection with fallbacks
+    async function detectUserRegion() {
+        try {
+            // Try first API (ipinfo.io)
+            let response = await fetch('https://ipinfo.io/json?token=c246fced21495f');
+            let data = await response.json();
+            
+            // If we got valid country data, use it
+            if (data && data.country) {
+                return mapCountryToRegion(data.country);
+            }
+            
+            // If first API fails, try alternate API (ipapi.co)
+            response = await fetch('https://ipapi.co/json/');
+            data = await response.json();
+            
+            if (data && data.country) {
+                return mapCountryToRegion(data.country);
+            }
+            
+            // As a last resort, try geolocation-db.com
+            response = await fetch('https://geolocation-db.com/json/');
+            data = await response.json();
+            
+            if (data && data.country_code) {
+                return mapCountryToRegion(data.country_code);
+            }
+            
+            // If all APIs fail, fall back to global
+            return 'global';
+        } catch (error) {
+            console.error('Error detecting region:', error);
+            return 'global';
+        }
+    }
+
+    // Map country code to our region options
+    function mapCountryToRegion(countryCode) {
+        const countryRegionMap = {
+            'IN': 'in',
+            'GB': 'uk',
+            'DE': 'eu', 'FR': 'eu', 'IT': 'eu', 'ES': 'eu', 
+            'NL': 'eu', 'BE': 'eu', 'AT': 'eu', 'GR': 'eu', 
+            'PT': 'eu',
+            'US': 'us',
+            'CA': 'ca'
+        };
+        
+        return countryRegionMap[countryCode] || 'global';
+    }
+
+    // Initialize pricing when DOM is loaded
+    document.addEventListener('DOMContentLoaded', async function() {
+        try {
+            const region = await detectUserRegion();
+            updatePrices(region);
+        } catch (error) {
+            console.error('Error initializing pricing:', error);
+            updatePrices('global');
+        }
+    });
+    </script>
+</body>
+</html>
